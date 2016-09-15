@@ -8,6 +8,12 @@ L'objectif de ce projet est de fournir un squelette minimal pour débuter un pro
 
 # Utilisation du projet
 
+**Téléchargement du dépôt** :
+
+```shell
+git clone https://github.com/pbouamriou/webcomponent-seed.git
+```
+
 **Installation des dépendances** :
 
 ```shell
