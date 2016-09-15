@@ -8,3 +8,14 @@ L'objectif de ce projet est de fournir un squelette minimal pour débuter un pro
 
 # Utilisation du projet
 
+**Installation des dépendances** :
+
+```shell
+npm install
+```
+
+**Démarrage du serveur webpack qui prend en compte les modifications à chaud** :
+
+```shell
+npm start
+```
