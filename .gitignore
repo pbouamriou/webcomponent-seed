@@ -1,0 +1,13 @@
+CVS
+.svn
+.hg
+.lock-wscript
+.wafpickle-N
+*.swp
+src/**/*.js
+.DS_Store
+.vscode/.*
+._*
+npm-debug.log
+node_modules/
+dist/

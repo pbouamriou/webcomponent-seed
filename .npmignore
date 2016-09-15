@@ -1,0 +1,11 @@
+.git
+CVS
+.svn
+.hg
+.lock-wscript
+.wafpickle-N
+*.swp
+src/*/*.js
+.DS_Store
+._*
+npm-debug.log

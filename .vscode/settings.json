@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "node_modules/": true,
+        "typings/": true,
+        "src/**/*.js": true,
+        ".vscode/.*": true,
+        "bin/": true,
+        "**/*.map": true,
+        "**/._*": true,
+        "*.swp" : true,
+        "**/.browse*" : true
+    }
+}

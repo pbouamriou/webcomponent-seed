@@ -1,0 +1,28 @@
+{
+  "name": "webcomponent-seed",
+  "version": "0.1.0",
+  "description": "Template for webcomponents with typescript",
+  "main": "index.html",
+  "scripts": {
+    "start": "webpack-dev-server --config build/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p ./src && npm run start"
+  },
+  "author": "Philippe BOUAMRIOU",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pbouamriou/webcomponent-seed.git"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^1.1.1",
+    "eslint": "^3.4.0",
+    "eslint-config-google": "^0.6.0",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  },
+  "dependencies": {
+    "webcomponents.js": "^0.7.22"
+  }
+}
