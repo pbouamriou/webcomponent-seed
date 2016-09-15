@@ -38,8 +38,7 @@ class TestComponent extends HTMLElement {
     return this.getAttribute("message");
   }
 
-  buttonAction(): void {
-    let resultat = <HTMLElement>(<Element>this.parentNode).querySelector('#resultat');
+  buttonAction(resultat : HTMLElement): void {
     resultat.innerHTML = "<b>" + this.message + "</b>";
   }
 
@@ -47,7 +46,8 @@ class TestComponent extends HTMLElement {
     let template = <HTMLTemplateElement>documentOwner.querySelector('#base');
     let clone  = <Element>(documentOwner.importNode(template.content, true));
     let button = <HTMLElement>clone.querySelector('#bouton');
-    button.addEventListener('click', () => this.buttonAction(), false);
+    let resultat = <HTMLElement>clone.querySelector('#resultat');
+    button.addEventListener('click', () => this.buttonAction(resultat), false);
     button.innerHTML = this.libelle;
 
     this.appendChild(clone)
