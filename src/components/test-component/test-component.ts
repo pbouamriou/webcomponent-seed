@@ -1,6 +1,11 @@
 /* jslint browser:true */
 /* global document HTMLElement */
 
+declare var require: any;
+
+//require("!style!sass!../../../style.scss");
+var css = require("!style-loader!css-loader!sass-loader!../../../style.scss");
+
 let currentScript = (<any>document)._currentScript || (<any>document).currentScript;
 let documentOwner: Document = currentScript.ownerDocument;
 declare var module: any;

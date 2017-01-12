@@ -16,8 +16,12 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^1.1.1",
+    "css-loader": "^0.26.1",
     "eslint": "^3.4.0",
     "eslint-config-google": "^0.6.0",
+    "node-sass": "^4.2.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
     "typescript": "^1.8.10",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"

@@ -29,6 +29,11 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
+        //loader: "style!css?sourceMap!sass?sourceMap"
       }
     ]
   }
