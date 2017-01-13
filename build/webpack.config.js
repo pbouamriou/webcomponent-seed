@@ -1,7 +1,11 @@
 "use strict";
 
+var webpack = require('webpack');
+
 let path = require("path");
+//var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log(path.resolve(__dirname, "../dist/"));
 
@@ -11,9 +15,11 @@ module.exports = {
       __dirname, "../node_modules/webcomponents.js/webcomponents.js")],
     styles: [path.resolve(
       __dirname, "../styles.js")],
+    //testcomponent: [path.resolve(
+    //  __dirname, "../src/components/test-component/test-component"),
+    //  "webpack-dev-server/client?http://localhost:8080/"]
     testcomponent: [path.resolve(
-      __dirname, "../src/components/test-component/test-component"),
-      "webpack-dev-server/client?http://localhost:8080/"]
+       __dirname, "../src/components/test-component/test-component")]
   },
   output: {
     path: path.resolve(__dirname, "../dist/"),
@@ -42,6 +48,11 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("style.css")
+    //new CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
+    new ExtractTextPlugin("style.css"),
+    new webpack.optimize.UglifyJsPlugin()
+    //new HtmlWebpackPlugin({ template: 'index.html' })
+
+
   ]
 };

@@ -1,10 +1,11 @@
 /* jslint browser:true */
 /* global document HTMLElement */
 
-declare var require: any;
+//declare var require: any;
 
-var styles = require("../../../dist/styles.js");
+//var styles = require("../../../styles.js");
 //var css = require("!style-loader!css-loader!sass-loader!../../../style.scss");
+//var css = require("../../../dist/style.css");
 
 let currentScript = (<any>document)._currentScript || (<any>document).currentScript;
 let documentOwner: Document = currentScript.ownerDocument;
