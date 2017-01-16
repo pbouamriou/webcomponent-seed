@@ -10,10 +10,10 @@ console.log(path.resolve(__dirname, "../dist/"));
 module.exports = {
   entry: {
     app: PROD ? [
-      path.resolve(__dirname, "../app.js")
+      path.resolve(__dirname, "../app.ts")
     ] :
     [
-      path.resolve(__dirname, "../app.js"),
+      path.resolve(__dirname, "../app.ts"),
       "webpack-dev-server/client?http://localhost:8080/"
     ]
   },
@@ -40,7 +40,7 @@ module.exports = {
         loader: "style-loader!css-loader!sass-loader"
       },
       {
-        test: /component\.html/,
+        test: /component.*\.html/,
         loader: "html-loader"
       }
     ]

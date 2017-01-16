@@ -4,10 +4,10 @@
 declare function require(filename:string): string;
 declare var module: any;
 
-let html = require("./test-component.html");
-require("./test-component.scss");
+let html = require("./test-component2.html");
+require("./test-component2.scss");
 
-export class TestComponent extends HTMLElement {
+export class TestComponent2 extends HTMLElement {
   constructor(libelle:string, message:string)
   {
     super();
@@ -55,4 +55,4 @@ export class TestComponent extends HTMLElement {
 }
 
 
-(<any>document).registerElement('test-component', TestComponent);
+(<any>document).registerElement('test-component2', TestComponent2);
