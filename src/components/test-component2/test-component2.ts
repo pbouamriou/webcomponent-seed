@@ -40,15 +40,20 @@ export class TestComponent2 extends HTMLElement {
     return this.getAttribute("message");
   }
 
-  buttonAction(resultat : HTMLElement): void {
-    resultat.innerHTML = "<b>" + this.message + "</b>";
+  buttonAction(): void {
+    this.changeMessage(this.message);
+    setTimeout(() => this.changeMessage(""), 2000);
+  }
+
+  changeMessage(text: string):void {
+    let resultat = <HTMLElement>this.querySelector('#resultat');
+    resultat.innerHTML = "<b>" + text + "</b>";
   }
 
   createdCallback() : void {
     this.innerHTML = html;
     let button = <HTMLElement>this.querySelector('#bouton');
-    let resultat = <HTMLElement>this.querySelector('#resultat');
-    button.addEventListener('click', () => this.buttonAction(resultat), false);
+    button.addEventListener('click', () => this.buttonAction(), false);
     button.innerHTML = this.libelle;
   }
 
