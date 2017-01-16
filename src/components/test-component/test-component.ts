@@ -4,7 +4,8 @@
 declare var require: any;
 
 //require("!style!sass!../../../style.scss");
-var css = require("!style-loader!css-loader!sass-loader!../../../style.scss");
+//var css = require("!style-loader!css-loader!sass-loader!../../../style.scss");
+var html = require("./test-component.html");
 
 let currentScript = (<any>document)._currentScript || (<any>document).currentScript;
 let documentOwner: Document = currentScript.ownerDocument;
@@ -48,14 +49,20 @@ class TestComponent extends HTMLElement {
   }
 
   createdCallback() : void {
-    let template = <HTMLTemplateElement>documentOwner.querySelector('#base');
-    let clone  = <Element>(documentOwner.importNode(template.content, true));
-    let button = <HTMLElement>clone.querySelector('#bouton');
-    let resultat = <HTMLElement>clone.querySelector('#resultat');
+    //let template = <HTMLTemplateElement>documentOwner.querySelector('#base');
+    //let clone  = <Element>(documentOwner.importNode(template.content, true));
+    //let button = <HTMLElement>clone.querySelector('#bouton');
+    //let resultat = <HTMLElement>clone.querySelector('#resultat');
+    //button.addEventListener('click', () => this.buttonAction(resultat), false);
+    //button.innerHTML = this.libelle;
+
+    this.innerHTML = html;
+    let button = <HTMLElement>this.querySelector('#bouton');
+    let resultat = <HTMLElement>this.querySelector('#resultat');
     button.addEventListener('click', () => this.buttonAction(resultat), false);
     button.innerHTML = this.libelle;
 
-    this.appendChild(clone)
+    //this.appendChild(clone)
   }
 
 }

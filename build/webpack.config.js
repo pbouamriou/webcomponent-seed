@@ -1,20 +1,25 @@
 "use strict";
 
+var webpack = require('webpack');
 let path = require("path");
+
+var PROD = JSON.parse(process.env.PROD_ENV || '0');
 
 console.log(path.resolve(__dirname, "../dist/"));
 
 module.exports = {
   entry: {
-    webcomponents: [path.resolve(
-      __dirname, "../node_modules/webcomponents.js/webcomponents.js")],
-    testcomponent: [path.resolve(
-      __dirname, "../src/components/test-component/test-component"),
-      "webpack-dev-server/client?http://localhost:8080/"]
+    app: PROD ? [
+      path.resolve(__dirname, "../app.js")
+    ] :
+    [
+      path.resolve(__dirname, "../app.js"),
+      "webpack-dev-server/client?http://localhost:8080/"
+    ]
   },
   output: {
     path: path.resolve(__dirname, "../dist/"),
-    filename: "[name].js",
+    filename: "app.bundle.js",
     publicPath: "/dist/"
   },
   // Currently we need to add '.ts' to the resolve.extensions array.
@@ -32,9 +37,17 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"]
-        //loader: "style!css?sourceMap!sass?sourceMap"
+        loader: "style-loader!css-loader!sass-loader"
+      },
+      {
+        test: /component\.html/,
+        loader: "html-loader"
       }
     ]
-  }
+  },
+  plugins: PROD ? [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    })
+  ] : []
 };
