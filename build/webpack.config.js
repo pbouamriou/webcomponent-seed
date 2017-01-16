@@ -3,7 +3,7 @@
 var webpack = require('webpack');
 let path = require("path");
 
-var PROD = JSON.parse(process.env.PROD_ENV || '0');
+let PROD = JSON.parse(process.env.PROD_ENV || '0');
 
 console.log(path.resolve(__dirname, "../dist/"));
 
