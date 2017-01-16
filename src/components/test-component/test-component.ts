@@ -1,7 +1,7 @@
 /* jslint browser:true */
 /* global document HTMLElement */
 
-declare var require: any;
+declare function require(filename:string): string;
 
 let html = require("./test-component.html");
 
