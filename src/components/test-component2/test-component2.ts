@@ -8,20 +8,9 @@ let html = require("./test-component2.html");
 require("./test-component2.scss");
 
 export class TestComponent2 extends HTMLElement {
-  constructor(libelle:string, message:string)
+  constructor()
   {
     super();
-    this.libelle = libelle;
-    this.message = message;
-
-    if(module.hot) {
-      module.hot.accept()
-      module.hot.dispose( () => {
-        let resultat = <HTMLElement>(<Element>this.parentNode).querySelector('#resultat');
-        resultat.innerHTML = "";
-      })
-
-    }
   }
 
   set libelle(libelle: string) {
@@ -46,18 +35,17 @@ export class TestComponent2 extends HTMLElement {
   }
 
   changeMessage(text: string):void {
-    let resultat = <HTMLElement>this.querySelector('#resultat');
+    let resultat = <HTMLElement>this.querySelector('.part2 .resultat');
     resultat.innerHTML = "<b>" + text + "</b>";
   }
 
-  createdCallback() : void {
+  connectedCallback() : void {
     this.innerHTML = html;
-    let button = <HTMLElement>this.querySelector('#bouton');
+    let button = <HTMLElement>this.querySelector('.part2 .bouton');
     button.addEventListener('click', () => this.buttonAction(), false);
     button.innerHTML = this.libelle;
   }
 
 }
 
-
-(<any>document).registerElement('test-component2', TestComponent2);
+customElements.define('test-component2', TestComponent2)
