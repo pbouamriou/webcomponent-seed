@@ -1,7 +1,8 @@
 "use strict";
 
-var webpack = require('webpack');
-let path = require("path");
+const webpack = require('webpack');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const path = require("path");
 
 let PROD = JSON.parse(process.env.PROD_ENV || '0');
 
@@ -17,6 +18,7 @@ module.exports = {
       "webpack-dev-server/client?http://localhost:8080/"
     ]
   },
+  mode: PROD ? "production" : "development",
   output: {
     path: path.resolve(__dirname, "../dist/"),
     filename: "app.bundle.js",
@@ -24,16 +26,22 @@ module.exports = {
   },
   // Currently we need to add '.ts' to the resolve.extensions array.
   resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   // Source maps support ('inline-source-map' also works)
   devtool: 'source-map',
   // Add the loader for .ts files.
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+        loader: 'awesome-typescript-loader',
+        options: {
+          compilerOptions: {
+            experimentalDecorators: true,
+            target: "es5"
+          }
+        }
       },
       {
         test: /\.scss$/,
@@ -45,9 +53,19 @@ module.exports = {
       }
     ]
   },
-  plugins: PROD ? [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
-    })
-  ] : []
+  optimization: {
+    minimizer: [
+      // we specify a custom UglifyJsPlugin here to get source maps in production
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: true,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
+    ]
+  }
 };
